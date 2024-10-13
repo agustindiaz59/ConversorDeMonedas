@@ -16,10 +16,9 @@ import java.util.Scanner;
  */
 public class App 
 {
-    private static Gson gson;
     private static ExchangeRateApi datos;
     private static final Scanner teclado = new Scanner(System.in);
-    private static final float monto = 0;
+    private static float monto = 0;
     private static final String apiBase = "https://v6.exchangerate-api.com/v6";
     private static final String apikey = "/b1553fad150b7bbd879ef91a/latest/";
 
@@ -111,7 +110,7 @@ public class App
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             client.close();
 
-            gson = new Gson();
+            Gson gson = new Gson();
 
             //Obtengo solo el objeto conversion_rates del json y entonces lo convierto
             JsonObject json = JsonParser.parseString(response.body()).getAsJsonObject();
